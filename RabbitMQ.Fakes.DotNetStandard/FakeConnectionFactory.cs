@@ -37,38 +37,19 @@ namespace RabbitMQ.Fakes.DotNetStandard
         #endregion IConnectionFactory Implementation
 
         public IConnection Connection { get; private set; }
-
         public RabbitServer Server { get; private set; }
-
-        public FakeConnection UnderlyingConnection
-        {
-            get { return (FakeConnection)Connection; }
-        }
-
-        public List<FakeModel> UnderlyingModel
-        {
-            get
-            {
-                var connection = UnderlyingConnection;
-                if (connection == null)
-                    return null;
-
-                return connection.Models;
-            }
-        }
+        public ICredentialsProvider CredentialsProvider { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public ICredentialsRefresher CredentialsRefresher { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public FakeConnection UnderlyingConnection => (FakeConnection)Connection;
+        public List<FakeModel> UnderlyingModel => UnderlyingConnection == null ? null : UnderlyingConnection.Models;
 
         #endregion Properties
 
         #region Constructors
 
-        public FakeConnectionFactory() : this(new RabbitServer())
-        {
-        }
+        public FakeConnectionFactory() : this(new RabbitServer()) { }
 
-        public FakeConnectionFactory(RabbitServer server)
-        {
-            Server = server;
-        }
+        public FakeConnectionFactory(RabbitServer server) => Server = server;
 
         #endregion Constructors
 
@@ -81,37 +62,16 @@ namespace RabbitMQ.Fakes.DotNetStandard
             throw new NotImplementedException();
         }
 
-        public IConnection CreateConnection(IList<AmqpTcpEndpoint> endpoints, string clientProvidedName)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IConnection CreateConnection(IList<AmqpTcpEndpoint> endpoints)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IConnection CreateConnection(IList<string> hostnames, string clientProvidedName)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IConnection CreateConnection(IList<string> hostnames)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IConnection CreateConnection(string clientProvidedName)
-        {
-            throw new NotImplementedException();
-        }
+        public IConnection CreateConnection(IList<AmqpTcpEndpoint> endpoints, string clientProvidedName) => throw new NotImplementedException();
+        public IConnection CreateConnection(IList<AmqpTcpEndpoint> endpoints) => throw new NotImplementedException();
+        public IConnection CreateConnection(IList<string> hostnames, string clientProvidedName) => throw new NotImplementedException();
+        public IConnection CreateConnection(IList<string> hostnames) => throw new NotImplementedException();
+        public IConnection CreateConnection(string clientProvidedName) => throw new NotImplementedException();
 
         public IConnection CreateConnection()
         {
             if (Connection == null)
-            {
                 Connection = new FakeConnection(Server);
-            }
 
             return Connection;
         }

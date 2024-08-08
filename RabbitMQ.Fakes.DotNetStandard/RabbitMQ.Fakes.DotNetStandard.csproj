@@ -16,10 +16,11 @@
     <PackageReleaseNotes>https://raw.githubusercontent.com/KyleCrowley/RabbitMQ.Fakes.DotNetStandard/master/RELEASE_NOTES.md</PackageReleaseNotes>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/KyleCrowley/RabbitMQ.Fakes.DotNetStandard</RepositoryUrl>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="RabbitMQ.Client" Version="6.2.1" />
+    <PackageReference Include="RabbitMQ.Client" Version="6.8.1" />
   </ItemGroup>
 
 </Project>

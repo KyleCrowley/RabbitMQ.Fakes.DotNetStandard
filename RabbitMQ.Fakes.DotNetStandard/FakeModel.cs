@@ -39,6 +39,9 @@ namespace RabbitMQ.Fakes.DotNetStandard
 
         public int ChannelNumber { get; }
 
+        public string CurrentQueue => throw new NotImplementedException();
+
+
         #endregion IModel Implementation
 
         #endregion Properties
